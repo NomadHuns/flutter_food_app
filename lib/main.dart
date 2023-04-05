@@ -49,6 +49,23 @@ class HomePage extends StatelessWidget {
           const SizedBox(width: 20),
         ],
       ),
+      floatingActionButton: Container(
+        height: 80,
+        width: 80,
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: kPrimaryColor.withOpacity(.26),
+        ),
+        child: Container(
+          padding: EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: kPrimaryColor,
+          ),
+          child: SvgPicture.asset("assets/icons/plus.svg"),
+        ),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -84,16 +101,34 @@ class HomePage extends StatelessWidget {
             ),
             child: SvgPicture.asset("assets/icons/search.svg"),
           ),
-          FoodCard(
-            image: "assets/images/image_1.png",
-            title: "Vegan salad bowl",
-            price: 20,
-            calories: 420,
-            ingredient: "red Tomato",
-            desc:
-                "Contrary to popular belief, Lorem Ipsum is not simply random text."
-                " It has roots in a piece of classical Latin literature from 45 BC,"
-                " making it over 2000 years old. ",
+          const SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                FoodCard(
+                  image: "assets/images/image_1.png",
+                  title: "Vegan salad bowl",
+                  price: 20,
+                  calories: 420,
+                  ingredient: "red Tomato",
+                  desc:
+                      "Contrary to popular belief, Lorem Ipsum is not simply random text."
+                      " It has roots in a piece of classical Latin literature from 45 BC,"
+                      " making it over 2000 years old. ",
+                ),
+                FoodCard(
+                  image: "assets/images/image_2.png",
+                  title: "Vegan salad bowl",
+                  price: 20,
+                  calories: 420,
+                  ingredient: "red Tomato",
+                  desc:
+                  "Contrary to popular belief, Lorem Ipsum is not simply random text."
+                      " It has roots in a piece of classical Latin literature from 45 BC,"
+                      " making it over 2000 years old. ",
+                ),
+              ],
+            ),
           ),
         ],
       ),
