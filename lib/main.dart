@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_app/common/constants.dart';
 import 'package:food_app/view/componunts/food_card.dart';
+import 'package:food_app/view/pages/detail_page.dart';
 import 'package:food_app/view/pages/home_page.dart';
 
 void main() {

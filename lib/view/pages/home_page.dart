@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_app/common/constants.dart';
 import 'package:food_app/view/componunts/category_tile.dart';
 import 'package:food_app/view/componunts/food_card.dart';
+import 'package:food_app/view/pages/detail_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,83 +19,88 @@ class HomePage extends StatelessWidget {
           _buildTitle(context),
           _buildCategoryScrollView(),
           _buildSearchBar(),
-          _buildFoodCardScrollView(),
+          _buildFoodCardScrollView(context),
         ],
       ),
     );
   }
 
-  Widget _buildFoodCardScrollView() {
-    return const SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              FoodCard(
-                image: "assets/images/image_1.png",
-                title: "Vegan salad bowl",
-                price: 20,
-                calories: 420,
-                ingredient: "red Tomato",
-                desc:
-                "Contrary to popular belief, Lorem Ipsum is not simply random text."
-                    " It has roots in a piece of classical Latin literature from 45 BC,"
-                    " making it over 2000 years old. ",
-              ),
-              FoodCard(
-                image: "assets/images/image_2.png",
-                title: "Vegan salad bowl",
-                price: 20,
-                calories: 420,
-                ingredient: "red Tomato",
-                desc:
-                "Contrary to popular belief, Lorem Ipsum is not simply random text."
-                    " It has roots in a piece of classical Latin literature from 45 BC,"
-                    " making it over 2000 years old. ",
-              ),
-            ],
+  Widget _buildFoodCardScrollView(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          FoodCard(
+            image: "assets/images/image_1.png",
+            title: "Vegan salad bowl",
+            price: 20,
+            calories: 420,
+            ingredient: "red Tomato",
+            desc:
+            "Contrary to popular belief, Lorem Ipsum is not simply random text."
+                " It has roots in a piece of classical Latin literature from 45 BC,"
+                " making it over 2000 years old. ",
+            press: () {Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(),));},
           ),
-        );
+          FoodCard(
+            image: "assets/images/image_2.png",
+            title: "Vegan salad bowl",
+            price: 20,
+            calories: 420,
+            ingredient: "red Tomato",
+            desc:
+            "Contrary to popular belief, Lorem Ipsum is not simply random text."
+                " It has roots in a piece of classical Latin literature from 45 BC,"
+                " making it over 2000 years old. ",
+            press: () {Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(),));},
+          ),
+        ],
+      ),
+    );
   }
 
   Widget _buildSearchBar() {
     return Container(
-          alignment: Alignment.centerLeft,
-          margin: const EdgeInsets.all(20),
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-          height: 50,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: kBoarderColor),
-          ),
-          child: SvgPicture.asset("assets/icons/search.svg"),
-        );
+      alignment: Alignment.centerLeft,
+      margin: const EdgeInsets.all(20),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      height: 50,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: kBoarderColor),
+      ),
+      child: SvgPicture.asset("assets/icons/search.svg"),
+    );
   }
 
   Widget _buildCategoryScrollView() {
     return const SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              CategoryTile(title: 'all', active: true),
-              CategoryTile(title: 'Italian'),
-              CategoryTile(title: 'Asian'),
-              CategoryTile(title: 'Chinese'),
-              CategoryTile(title: 'Burgers'),
-            ],
-          ),
-        );
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          CategoryTile(title: 'all', active: true),
+          CategoryTile(title: 'Italian'),
+          CategoryTile(title: 'Asian'),
+          CategoryTile(title: 'Chinese'),
+          CategoryTile(title: 'Burgers'),
+        ],
+      ),
+    );
   }
 
   Widget _buildTitle(BuildContext context) {
     return Padding(
-          padding: const EdgeInsets.all(20),
-          child: Text(
-            'Simple way to find \n'
-                'Tasty food',
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-        );
+      padding: const EdgeInsets.all(20),
+      child: Text(
+        'Simple way to find \n'
+            'Tasty food',
+        style: Theme
+            .of(context)
+            .textTheme
+            .headlineSmall,
+      ),
+    );
   }
 
   Widget _buildFloadtingActionButton() {
