@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_app/common/constants.dart';
+import 'package:food_app/componunts/food_card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,9 +25,9 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
         textTheme: const TextTheme(
-          headlineSmall: TextStyle(fontWeight: FontWeight.bold),
-          labelLarge: TextStyle(fontWeight: FontWeight.bold),
-        ),
+            headlineSmall: TextStyle(fontWeight: FontWeight.bold),
+            labelLarge: TextStyle(fontWeight: FontWeight.bold),
+            titleMedium: TextStyle(fontWeight: FontWeight.bold)),
       ),
       home: const HomePage(),
     );
@@ -83,6 +84,17 @@ class HomePage extends StatelessWidget {
             ),
             child: SvgPicture.asset("assets/icons/search.svg"),
           ),
+          FoodCard(
+            image: "assets/images/image_1.png",
+            title: "Vegan salad bowl",
+            price: 20,
+            calories: 420,
+            ingredient: "red Tomato",
+            desc:
+                "Contrary to popular belief, Lorem Ipsum is not simply random text."
+                " It has roots in a piece of classical Latin literature from 45 BC,"
+                " making it over 2000 years old. ",
+          ),
         ],
       ),
     );
@@ -90,11 +102,11 @@ class HomePage extends StatelessWidget {
 }
 
 class CategoryTile extends StatelessWidget {
-  const CategoryTile({Key? key, required this.title, this.active = false}) : super(key: key);
+  const CategoryTile({Key? key, required this.title, this.active = false})
+      : super(key: key);
 
   final String title;
   final bool active;
-
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +114,8 @@ class CategoryTile extends StatelessWidget {
       padding: const EdgeInsets.only(left: 20, right: 30),
       child: Text(
         title,
-        style: Theme.of(context).textTheme.labelLarge?.copyWith(color: active ? kPrimaryColor : kTextColor.withOpacity(0.4)),
+        style: Theme.of(context).textTheme.labelLarge?.copyWith(
+            color: active ? kPrimaryColor : kTextColor.withOpacity(0.4)),
       ),
     );
   }
